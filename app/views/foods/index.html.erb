@@ -1,1 +1,6 @@
-<h1>FOOD</h1>
+<section id="food">
+  <div class="btn-container">
+    <%= button_to 'Add Food', '/foods/create', method: :get %>
+  </div>
+  <%= render "shared/food_list" %>
+</section>
