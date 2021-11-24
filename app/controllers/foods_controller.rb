@@ -26,6 +26,8 @@ class FoodsController < ApplicationController
     params.require(:food).permit(:name, :measurement_unit, :price)
   end
 
-  def show
+  def destroy
+    Food.find(params[:id]).destroy
+    redirect_to "/foods"
   end
 end
