@@ -1,0 +1,50 @@
+// Place all the styles related to the food controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  padding: 2rem 5rem;
+}
+
+#food {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn-container {
+  align-self: flex-end;
+  margin-bottom: 40px;
+
+  form {
+    input {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+}
+
+.food-list {
+  border: 2px solid black;
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  tr {
+    th {
+      border-left: 2px solid black;
+      border-right: 2px solid black;
+      padding-right: 20px;
+      font-size: 28px;
+      background-color: #ccc;
+    }
+
+    td {
+      border-left: 2px solid black;
+      border-right: 2px solid black;
+      padding: 5px;
+      background-color: rgb(238, 238, 238);
+      font-size: 22px;
+      font-weight: 600;
+    }
+  }
+}
