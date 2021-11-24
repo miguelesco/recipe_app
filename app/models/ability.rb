@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -14,7 +12,7 @@ class Ability
     can :manage, Food, user_id: user.id
 
     can :create, Food
-    
+
     return unless user.role == 'admin'
 
     can :manage, :all
