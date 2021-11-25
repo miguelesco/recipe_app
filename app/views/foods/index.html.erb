@@ -1,0 +1,8 @@
+<section id="food">
+  <div class="btn-container">
+    <% if user_signed_in? %>
+      <%= button_to 'Add Food', '/foods/new', method: :get %>
+    <% end %>
+  </div>
+  <%= render "shared/food_list" %>
+</section>
