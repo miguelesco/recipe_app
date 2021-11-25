@@ -22,8 +22,14 @@
   </div>
 
   <div class="btns-container">
-    <%= button_to 'Generate shopping list', '/foods/new', method: :get %>
-    <%= button_to 'Add ingredient', '/foods/new', method: :get %>
+    <div class="m-4">
+      <%= button_to 'Generate shopping list', '/foods/new', method: :get %>
+    </div>
+    <% if can? :update, @recipe %>
+      <div class="m-4">
+        <%= link_to "Add ingredient", "#{@recipe.id}/recipe_foods/new", class: "btn btn-success" %>
+      </div>
+    <% end %>
   </div>
   <%= render "shared/food_list.html.erb" %>
 </section>
