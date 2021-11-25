@@ -1,3 +1,21 @@
 // Place all the styles related to the Recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.recipe {
+  h1 {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+}
+.recipe-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.btns-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 3px solid black;
+  padding-bottom: 20px;
+}

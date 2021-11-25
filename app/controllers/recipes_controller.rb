@@ -15,8 +15,8 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe_foods = @recipe.recipe_foods.includes(:food)
-    @recipe
+    @recipe = Recipe.find(params[:id])
+    @foods = RecipeFood.where(recipe_id: @recipe.id)
   end
 
   def new
@@ -45,23 +45,17 @@ class RecipesController < ApplicationController
   end
 
   def update
-    if @recipe.update(public: !@recipe.public)
-      if @recipe.public
-        flash[:notice] = 'Public'
-      else
-        flash[:error] = 'Not Public'
-      end
+    recipe = Recipe.find(params[:id])
+    if recipe.update(recipe_public_params)
+      flash[:notice] = 'Public modified.'
+      redirect_to recipe_path(id: recipe.id)
     else
-      flash[:error] = 'Public status couldn\'t be updated'
+      flash[:error] = "Error to update"
+      render :index
     end
-    redirect_to recipe_url(@recipe)
   end
 
   private
-
-  def food_params
-    params.require(:food).permit(:name, :measurement_unit, :price)
-  end
 
   def set_user_recipe
     @recipe = Recipe.find(params[:id])
@@ -71,6 +65,12 @@ class RecipesController < ApplicationController
       flash[:error] = 'You have no access to this page'
       redirect_back(fallback_location: public_recipes_path)
     end
+  end
+
+  private
+
+  def recipe_public_params
+    params.require(:recipe).permit(:public)
   end
 
   def recipe_params

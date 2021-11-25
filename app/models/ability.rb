@@ -12,6 +12,7 @@ class Ability
     can :manage, Food, user_id: user.id
 
     can :create, Food
+    can :update, Recipe, user_id: user.id
 
     return unless user.role == 'admin'
 
