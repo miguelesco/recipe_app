@@ -16,6 +16,7 @@ class Ability
     return unless user.role == 'admin'
 
     can :manage, :all
+    can :manage, Recipe, user: user
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
