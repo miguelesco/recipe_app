@@ -1,35 +1,35 @@
-
-<table class="food-list">
-  <tr>
-    <th>
-      Food
-    </th>
-    <th>
-      Measurement Unit
-    </th>
-    <th>
-      Unit Price
-    </th>
-    <th>
-      Actions
-    </th>
-  </tr>
   <% @foods.each do |food| %>
     <tr>
       <td>
-        <%= food.name %>
+        <%if food.quantity? %>
+          <%= food.food.name %>
+        <%else%>
+          <%= food.name %>
+        <%end%>
       </td>
       <td>
-        <%= food.measurement_unit %>
+        <%if food.quantity? %>
+          <%= food.quantity %> <%= food.food.measurement_unit %>
+        <%else%>
+          <%= food.measurement_unit %>
+        <%end%>
       </td>
       <td>
-        $<%= food.price %>
+        <%if food.quantity? %>
+          $<%= food.food.price %> 
+        <%else%>
+          <%= food.price %>
+        <%end%>
       </td>
       <td>
-        <% if can? :delete, food %>
-          <%= link_to 'Delete', food_path(food.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%if food.quantity? %>
+        <%= link_to 'Modify', "/recipes/#{@recipe.id}/recipe_foods/#{food.id}/edit" %>
+        <%= link_to 'Remove', "/recipes/#{@recipe.id}/recipe_foods/#{food.id}", method: :delete, class: "ms-2 text-danger" %>
+        <%else%>
+          <% if can? :delete, food %>
+            <%= link_to 'Delete', food_path(food.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%end%>
         <%end%>
       </td>
     </tr>
   <%end%>
-</table>

@@ -31,5 +31,22 @@
       </div>
     <% end %>
   </div>
-  <%= render "shared/food_list.html.erb" %>
+
+  <table class="food-list">
+    <tr>
+      <th>
+        Food
+      </th>
+      <th>
+        Quantity
+      </th>
+      <th>
+        Unit Price
+      </th>
+      <th>
+        Actions
+      </th>
+    </tr>
+    <%= render "shared/food_list.html.erb" %>
+  </table>
 </section>
