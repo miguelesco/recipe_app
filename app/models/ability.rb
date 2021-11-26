@@ -7,6 +7,7 @@ class Ability
     can :read, User
     can :read, Food
     can :create, Recipe
+    can :read, Recipe
 
     return unless user.present?
 
@@ -14,11 +15,11 @@ class Ability
     can :read, Recipe, user_id: user.id
     can :create, Food
     can :update, Recipe, user_id: user.id
+    can :managed, Recipe, user_id: user.id
 
     return unless user.role == 'admin'
 
     can :manage, :all
-    can :manage, Recipe, user: user
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

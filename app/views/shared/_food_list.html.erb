@@ -23,8 +23,10 @@
     </td>
     <td>
       <%if food.has_attribute?(:quantity) %>
-      <%= link_to 'Modify', "/recipes/#{@recipe.id}/recipe_foods/#{food.id}/edit" %>
-      <%= link_to 'Remove', "/recipes/#{@recipe.id}/recipe_foods/#{food.id}", method: :delete, class: "ms-2 text-danger" %>
+        <% if can? :update, @recipe %>
+          <%= link_to 'Modify', "/recipes/#{@recipe.id}/recipe_foods/#{food.id}/edit" %>
+          <%= link_to 'Remove', "/recipes/#{@recipe.id}/recipe_foods/#{food.id}", method: :delete, class: "ms-2 text-danger" %>
+        <% end %>
       <%else%>
         <% if can? :delete, food %>
           <%= link_to 'Delete', food_path(food.id), method: :delete, data: { confirm: 'Are you sure?' } %>

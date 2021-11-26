@@ -1,11 +1,8 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
 
-  before_action :set_user_recipes, only: %i[show update destroy]
-  before_action :set_user_recipe, only: %i[show update]
-
   def index
-    @recipes = current_user.recipes
+    @recipes = Recipe.all
   end
 
   def public_recipes
