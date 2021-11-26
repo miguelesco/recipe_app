@@ -5,7 +5,6 @@ class Recipe < ApplicationRecord
   validates :preparation_time, presence: true, numericality: { only_integer: false }
   validates :cooking_time, presence: true, numericality: { only_integer: false }
   validates :description, presence: true
-  validates :public, presence: true
 
   def all_recipes
     recipe.order(created_at: :desc)

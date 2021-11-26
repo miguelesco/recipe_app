@@ -4,5 +4,21 @@
       <%= button_to 'Add Food', '/foods/new', method: :get %>
     <% end %>
   </div>
-  <%= render "shared/food_list" %>
+  <table class="food-list">
+    <tr>
+      <th>
+        Food
+      </th>
+      <th>
+        Measurement Unit
+      </th>
+      <th>
+        Unit Price
+      </th>
+      <th>
+        Actions
+      </th>
+    </tr>
+    <%= render "shared/food_list" %>
+  </table>
 </section>
