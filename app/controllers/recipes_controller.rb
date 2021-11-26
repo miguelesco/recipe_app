@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @foods = RecipeFood.where(recipe_id: @recipe.id).includes(:food)
+    @ispublic = @recipe.public? || @recipe.user_id == current_user.id
   end
 
   def new
