@@ -50,7 +50,7 @@ class RecipesController < ApplicationController
       flash[:notice] = 'Public modified.'
       redirect_to recipe_path(id: recipe.id)
     else
-      flash[:error] = "Error to update"
+      flash[:error] = 'Error to update'
       render :index
     end
   end
@@ -66,8 +66,6 @@ class RecipesController < ApplicationController
       redirect_back(fallback_location: public_recipes_path)
     end
   end
-
-  private
 
   def recipe_public_params
     params.require(:recipe).permit(:public)
