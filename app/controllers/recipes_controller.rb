@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_user_recipes, only: %i[show update destroy]
   before_action :set_user_recipe, only: %i[show update]
 
