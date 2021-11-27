@@ -2,11 +2,11 @@ class RecipesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    if current_user
-      @recipes = Recipe.where(public: true, user_id: current_user.id)
-    else
-      @recipes = Recipe.where(public: true)
-    end
+    @recipes = if current_user
+                 Recipe.where(public: true, user_id: current_user.id)
+               else
+                 Recipe.where(public: true)
+               end
   end
 
   def show
