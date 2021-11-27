@@ -1,7 +1,7 @@
 <a href="/recipes/<%= recipe.id %>" class='recipe'>
   <div class="recipe-container">
     <div class="recipe-name">
-      <h4 class="recipe-title">
+      <h4 class="recipe-title mt-5 fs-5">
         <%= recipe.name.capitalize %>
       </h4>
       <p class="recipe-owner">
@@ -9,10 +9,10 @@
       </p>
     </div>
     <div class="recipe-info">
-      <p class="info-text">
+      <p class="info-text fs-6">
         Total Food Items: <%= recipe.recipe_foods.count %>
       </p>
-      <p class="info-text">
+      <p class="info-text fs-6">
         Total Food Price: <%= recipe.total_price %>
       </p>
     </div>
