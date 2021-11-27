@@ -16,12 +16,11 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @foods = RecipeFood.where(recipe_id: @recipe.id).includes(:food)
-    @ispublic = false
-    if current_user
-      @ispublic = @recipe.public? || @recipe.user_id == current_user.id
-    else 
-      @ispublic = @recipe.public?
-    end
+    @ispublic = if current_user
+                  @recipe.public? || @recipe.user_id == current_user.id
+                else
+                  @recipe.public?
+                end
   end
 
   def new
