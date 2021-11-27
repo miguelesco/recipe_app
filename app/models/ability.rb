@@ -6,7 +6,6 @@ class Ability
 
     can :read, User
     can :read, Food
-    can :create, Recipe
     can :read, Recipe
 
     return unless user.present?
