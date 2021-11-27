@@ -1,4 +1,5 @@
 class GeneralShoppingListController < ApplicationController
+
   def index
     @recipes = current_user.recipes
     db_foods = Food.includes(:recipe_foods).where.not('recipe_foods.id' => nil)
