@@ -1,0 +1,24 @@
+<section id="food">
+  <div class="btn-container">
+    <% if user_signed_in? %>
+      <%= button_to 'Add Food', '/foods/new', method: :get %>
+    <% end %>
+  </div>
+  <table class="food-list">
+    <tr>
+      <th>
+        Food
+      </th>
+      <th>
+        Measurement Unit
+      </th>
+      <th>
+        Unit Price
+      </th>
+      <th>
+        Actions
+      </th>
+    </tr>
+    <%= render "shared/food_list" %>
+  </table>
+</section>

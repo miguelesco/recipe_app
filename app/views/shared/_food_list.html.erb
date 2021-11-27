@@ -1,0 +1,37 @@
+<% @foods.each do |food| %>
+  <tr>
+    <td>
+      <%if food.has_attribute?(:quantity) %>
+        <%= food.food.name %>
+      <%else%>
+        <%= food.name %>
+      <%end%>
+    </td>
+    <td>
+      <%if food.has_attribute?(:quantity) %>
+        <%= food.quantity %> <%= food.food.measurement_unit %>
+      <%else%>
+        <%= food.measurement_unit %>
+      <%end%>
+    </td>
+    <td>
+      <%if food.has_attribute?(:quantity) %>
+        $<%= food.food.price %> 
+      <%else%>
+        <%= food.price %>
+      <%end%>
+    </td>
+    <td>
+      <%if food.has_attribute?(:quantity) %>
+        <% if can? :update, @recipe %>
+          <%= link_to 'Modify', "/recipes/#{@recipe.id}/recipe_foods/#{food.id}/edit" %>
+          <%= link_to 'Remove', "/recipes/#{@recipe.id}/recipe_foods/#{food.id}", method: :delete, class: "ms-2 text-danger" %>
+        <% end %>
+      <%else%>
+        <% if can? :delete, food %>
+          <%= link_to 'Delete', food_path(food.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%end%>
+      <%end%>
+    </td>
+  </tr>
+<%end%>
