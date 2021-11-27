@@ -5,14 +5,6 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
-  def public_recipes
-    @recipes = Recipe.public_recipes
-  end
-
-  def general_shopping_list
-    @foods = current_user.foods.includes(:recipe_foods)
-  end
-
   def show
     @recipe = Recipe.find(params[:id])
     @foods = RecipeFood.where(recipe_id: @recipe.id).includes(:food)
