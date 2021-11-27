@@ -1,12 +1,12 @@
 class GeneralShoppingListController < ApplicationController
-  def index 
+  def index
     @recipes = current_user.recipes
-    dbFoods = Food.includes(:recipe_foods).where.not('recipe_foods.id' => nil)
-    @total_price_all = 0.0;
+    db_foods = Food.includes(:recipe_foods).where.not('recipe_foods.id' => nil)
+    @total_price_all = 0.0
 
-    @foods = dbFoods.map do |food|
+    @foods = db_foods.map do |food|
       total_quantity = food.recipe_foods.reduce(0) { |food_quantity, recipe_food| food_quantity + recipe_food.quantity }
-      
+
       total_price = total_quantity * food.price
       @total_price_all += total_price
       {
@@ -19,5 +19,4 @@ class GeneralShoppingListController < ApplicationController
       }
     end
   end
-
 end
