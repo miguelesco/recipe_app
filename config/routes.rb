@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root 'foods#index'
   devise_for :users
   resources :foods
-  get 'public_recipes', to: "recipes#public_recipes", as: "public_recipes"
-  resources :general_shopping_list
+  get 'public_recipes', to: "public_recipes#index", as: "public_recipes"
+  get 'general_shopping_list', to: "general_shopping_list#index", as: "general_shopping_list"
   resources :recipes do
     resources :recipe_foods, except: [:show]
   end 
