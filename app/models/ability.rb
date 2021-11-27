@@ -15,7 +15,7 @@ class Ability
     can :read, Recipe, user_id: user.id
     can :create, Food
     can :update, Recipe, user_id: user.id
-    can :managed, Recipe, user_id: user.id
+    can :manage, Recipe, user: user
 
     return unless user.role == 'admin'
 
